@@ -5,20 +5,26 @@ namespace calultr
 	int program::run()
 	{
 		std::cout << "Welcome to calultr!" << std::endl;
-		std::cout << "Enter two numbers and an operation (+, -, *, /):" << std::endl;
+		std::cout << "Enter two numbers and an operation (+, -, *, /) or 'exit' to quit:" << std::endl;
 
 		while (true)
 		{
-			double number0, number1 = 0.0;
+			double number0 = 0.0, number1 = 0.0;
 			std::string operation;
 
 			std::string input;
 			std::getline(std::cin, input);
 
+			if (input == "exit")
+			{
+				std::cout << "Exiting the program." << std::endl;
+				break;
+			}
+
 			std::istringstream input_stream_parser(input);
 			if (!(input_stream_parser >> number0 >> operation >> number1))
 			{
-				std::cout << "Invalid input." << std::endl;
+				std::cout << "Invalid input. Please enter two numbers and an operation." << std::endl;
 				continue;
 			}
 
@@ -42,22 +48,23 @@ namespace calultr
 					} 
 					else 
 					{
-						std::cout << "Error: Cannot divide by zero." << std::endl;
+						throw std::runtime_error("Error: Cannot divide by zero.");
 						continue;
 					}
 					break;
-				case UNKNOWN:
-					std::cout << "Error: Unknown operation." << std::endl;
+				default:
+					throw std::runtime_error("Error: Unknown operation.");
 					continue;
 			}
 			
 			std::cout << std::fixed;
-			std::cout << std::setprecision(24);
-			
+			std::cout << std::setprecision(6);
+
 			if (std::floor(result) == result) 
 			{
 				std::cout << "Result: " << static_cast<int>(result) << std::endl;
-			} else 
+			} 
+			else 
 			{
 				std::cout << "Result: " << result << std::endl;
 			}

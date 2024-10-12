@@ -20,7 +20,10 @@ namespace calultr
     {
     public:
         program() = default;
-        program(program**) = delete;
+        
+        program(const program&) = delete;
+        program& operator=(const program&) = delete;
+
         int run();
 
     private:
