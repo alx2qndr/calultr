@@ -54,10 +54,9 @@ namespace calultr
             }
 
 			std::cout << std::fixed;
-			std::cout << std::setprecision(16);
-
-			if (std::floor(result) == result) std::cout << "Result: " << int(result) << std::endl;
-			else std::cout << "Result: " << result << std::endl;
+			std::cout << std::setprecision(8);
+        
+            std::cout << "Result: " << result << std::endl;
         }
 
         return 0;

@@ -1,9 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <cmath>
 #include <limits>
-#include <iomanip>
 
 namespace calultr
 {
